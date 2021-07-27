@@ -11,29 +11,29 @@
         android:label="fragment_inicial"
         tools:layout="@layout/fragment_inicial" >
         <action
-            android:id="@+id/action_inicialFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_inicialFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
         <action
-            android:id="@+id/action_inicialFragment_to_cadastrarFragment"
-            app:destination="@id/cadastrarFragment" />
+            android:id="@+id/action_inicialFragment_to_CadastrarFragment"
+            app:destination="@id/CadastrarFragment" />
     </fragment>
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/LoginFragment"
         android:name="com.lucasesteves.brasilflixapp.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
-            android:id="@+id/action_loginFragment_to_home_nav"
+            android:id="@+id/action_LoginFragment_to_home_nav"
             app:destination="@id/home_nav" />
     </fragment>
     <fragment
-        android:id="@+id/cadastrarFragment"
+        android:id="@+id/CadastrarFragment"
         android:name="com.lucasesteves.brasilflixapp.fragments.CadastrarFragment"
         android:label="fragment_cadastrar"
         tools:layout="@layout/fragment_cadastrar" >
         <action
-            android:id="@+id/action_cadastrarFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_CadastrarFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
     </fragment>
     <include app:graph="@navigation/home_nav" />
 </navigation>

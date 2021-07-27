@@ -62,7 +62,7 @@ class LoginFragment : Fragment() {
                 getString(R.string.loginsuccessfully),
                 Snackbar.LENGTH_SHORT
             ).show()
-            findNavController().navigate(R.id.action_loginFragment_to_home_nav, bundle)
+            findNavController().navigate(R.id.action_LoginFragment_to_home_nav, bundle)
 //            startActivity(Intent(activity, homeActivity::class.java), bundle)
 
         }
@@ -117,7 +117,7 @@ class LoginFragment : Fragment() {
                 getString(R.string.alreadyloggedin),
                 Snackbar.LENGTH_SHORT
             ).show()
-            findNavController().navigate(R.id.action_loginFragment_to_home_nav, bundle)
+            findNavController().navigate(R.id.action_LoginFragment_to_home_nav, bundle)
 
 
         }
