@@ -15,7 +15,7 @@
         tools:context=".fragment.CadastrarFragment">
 
         <Button
-            android:id="@+id/button_cadastrar"
+            android:id="@+id/buttonCadastrar"
             app:backgroundTint="@color/buttonColor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layout_cpf"
+            android:id="@+id/layoutCpf"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:errorEnabled="true"
             app:layout_constraintTop_toBottomOf="@+id/layout_nome"
@@ -57,7 +57,7 @@
             android:paddingRight="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campo_cpf"
+                android:id="@+id/campoCpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/cpf"
@@ -69,14 +69,14 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layout_cpf"
+            app:layout_constraintTop_toBottomOf="@id/layoutCpf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campo_email"
+                android:id="@+id/campoEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/e_mail"
@@ -94,7 +94,7 @@
             android:paddingRight="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campo_telefone"
+                android:id="@+id/campoTelefone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/telefone"
@@ -113,7 +113,7 @@
             android:paddingRight="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campo_senha"
+                android:id="@+id/campoSenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/senha"

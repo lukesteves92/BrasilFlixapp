@@ -1,60 +1,146 @@
 package com.lucasesteves.brasilflixapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.lucasesteves.brasilflixapp.R
+import com.lucasesteves.brasilflixapp.databinding.FragmentLoginBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var binding: FragmentLoginBinding? = null
+    private lateinit var auth: FirebaseAuth
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        auth = Firebase.auth
+
+
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(inflater, container, false)
+        return binding?.root
+
+
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding?.floatingActionButton?.setOnClickListener{
+
+            val email = binding?.loginEmail?.text.toString()
+            val password = binding?.loginSenha?.text.toString()
+
+            val bundle = Bundle()
+            with(bundle){
+                putString(KEY_USER, email)
+                putString(KEY_PASSWORD, password)
+            }
+            signIn(email, password)
+//            Toast.makeText(context, "Login Efetuado", Toast.LENGTH_LONG).show()
+            Snackbar.make(
+                this.requireView(),
+                getString(R.string.loginsuccessfully),
+                Snackbar.LENGTH_SHORT
+            ).show()
+            findNavController().navigate(R.id.action_loginFragment_to_home_nav, bundle)
+//            startActivity(Intent(activity, homeActivity::class.java), bundle)
+
+        }
+
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+    private fun signIn(mail: String, pass: String){
+        val email = mail
+        val password = pass
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this.requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "signInWithEmail:success")
+                    val user = auth.currentUser
+                    updateUI(user)
+
+//                    startActivity(Intent(activity, MainActivity::class.java))
+                } else {
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(context, "Erro ao efetuar o login, verificar login/senha", Toast.LENGTH_LONG).show()
+                    updateUI(null)
+                }
+            }
+
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        var email = ""
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            currentUser.let{
+                var email = currentUser.uid
+            }
+            val bundle = Bundle()
+            with(bundle){
+                putString(KEY_USER, email)
+
+            }
+            Snackbar.make(
+                this.requireView(),
+                getString(R.string.alreadyloggedin),
+                Snackbar.LENGTH_SHORT
+            ).show()
+            findNavController().navigate(R.id.action_loginFragment_to_home_nav, bundle)
+
+
+        }
+    }
+
+    private fun reload() {
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LoginFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LoginFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private const val TAG = "EmailPassword"
+        private const val TAG2 = "GoogleActivity"
+        private const val RC_SIGN_IN = 9001
+        const val KEY_USER = "user"
+        const val KEY_PASSWORD = "password"
     }
+
+
+
+    private fun signOut() {
+        Firebase.auth.signOut()
+
+    }
+
+
 }

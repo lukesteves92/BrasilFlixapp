@@ -21,10 +21,19 @@
         android:id="@+id/loginFragment"
         android:name="com.lucasesteves.brasilflixapp.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_home_nav"
+            app:destination="@id/home_nav" />
+    </fragment>
     <fragment
         android:id="@+id/cadastrarFragment"
         android:name="com.lucasesteves.brasilflixapp.fragments.CadastrarFragment"
         android:label="fragment_cadastrar"
-        tools:layout="@layout/fragment_cadastrar" />
+        tools:layout="@layout/fragment_cadastrar" >
+        <action
+            android:id="@+id/action_cadastrarFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <include app:graph="@navigation/home_nav" />
 </navigation>
