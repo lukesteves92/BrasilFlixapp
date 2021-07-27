@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/inicial_nav"
+    app:startDestination="@id/inicialFragment">
+
+    <fragment
+        android:id="@+id/inicialFragment"
+        android:name="com.lucasesteves.brasilflixapp.fragments.inicialFragment"
+        android:label="fragment_inicial"
+        tools:layout="@layout/fragment_inicial" >
+        <action
+            android:id="@+id/action_inicialFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_inicialFragment_to_cadastrarFragment"
+            app:destination="@id/cadastrarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.lucasesteves.brasilflixapp.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/cadastrarFragment"
+        android:name="com.lucasesteves.brasilflixapp.fragments.CadastrarFragment"
+        android:label="fragment_cadastrar"
+        tools:layout="@layout/fragment_cadastrar" />
+</navigation>
