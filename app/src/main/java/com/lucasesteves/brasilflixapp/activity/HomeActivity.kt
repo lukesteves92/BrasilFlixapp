@@ -20,12 +20,12 @@ class HomeActivity : AppCompatActivity() {
 
 //        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
 //        setupSmoothBottomMenu(navController)
-    }
-
+//    }
+//
 //    private fun setupSmoothBottomMenu(navController: NavController) {
 //        val popupMenu = PopupMenu(this, null)
 //        popupMenu.inflate(R.menu.navigation_menu)
 //        val menu = popupMenu.menu
 //        binding.bottomBar.setupWithNavController(menu, navController)
-//    }
+   }
 }

@@ -2,9 +2,7 @@ package com.lucasesteves.brasilflixapp.model
 
 import com.google.gson.annotations.SerializedName
 
-data class filmes(
-    @SerializedName("poster_path")
-    var poster_path : String,
+data class Filmes(
     @SerializedName("release_date")
     var release_date : String,
     @SerializedName("title")
