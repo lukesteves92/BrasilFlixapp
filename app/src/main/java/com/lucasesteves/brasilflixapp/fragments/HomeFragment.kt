@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
 
     private var binding: FragmentHomeBinding? = null
     private val retrofitClient = RetrofitInstance
-        .getRetrofitInstance("https://api.themoviedb.org/3/movie/")
+        .getRetrofitInstance("")
     private val endpoint = retrofitClient.create(Endpoint::class.java)
     private val callback = endpoint.getFilmes()
 

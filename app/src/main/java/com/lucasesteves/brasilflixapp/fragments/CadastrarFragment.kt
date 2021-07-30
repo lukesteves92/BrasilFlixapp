@@ -31,8 +31,6 @@ class CadastrarFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         auth = Firebase.auth
-
-
     }
 
     override fun onCreateView(
@@ -82,8 +80,6 @@ class CadastrarFragment : Fragment() {
                     getString(R.string.cadastrar2),
                     Snackbar.LENGTH_SHORT
                 ).show()
-//                Toast.makeText(context, "Cadastro Realizado com sucesso", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.action_CadastrarFragment_to_LoginFragment)
             } else {
                 binding?.layoutCpf?.error = "CPF inválido"
             }
