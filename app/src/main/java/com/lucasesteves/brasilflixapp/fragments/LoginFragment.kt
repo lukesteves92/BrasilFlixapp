@@ -21,13 +21,9 @@ class LoginFragment : Fragment() {
     private var binding: FragmentLoginBinding? = null
     private lateinit var auth: FirebaseAuth
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = Firebase.auth
-
-
     }
 
     override fun onCreateView(
@@ -36,9 +32,6 @@ class LoginFragment : Fragment() {
     ): View? {
         binding = FragmentLoginBinding.inflate(inflater, container, false)
         return binding?.root
-
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -134,13 +127,8 @@ class LoginFragment : Fragment() {
         const val KEY_USER = "user"
         const val KEY_PASSWORD = "password"
     }
-
-
-
     private fun signOut() {
         Firebase.auth.signOut()
 
     }
-
-
 }

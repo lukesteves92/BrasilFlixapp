@@ -13,11 +13,9 @@
     <color name="buttonColor">#CACD48</color>
     <color name="bg">#F5F5F5</color>
     <color name="button">#1069e4</color>
-
-
-
-
-
+    <color name="tabtextColorNEW">#FFCC00</color>
+    <color name="dotsTips1">#FFCC00</color>
+    <color name="dotsTips2">#003880</color>
 
 
 </resources>

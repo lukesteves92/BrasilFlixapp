@@ -1,11 +1,19 @@
 package com.lucasesteves.brasilflixapp.adapter
 
+import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.GlideBuilder
 import com.lucasesteves.brasilflixapp.R
 import com.lucasesteves.brasilflixapp.databinding.FilmesBinding
 import com.lucasesteves.brasilflixapp.model.Filmes
+import kotlinx.coroutines.withContext
+
+
 
 class filmesAdapter (
     private val filmesList: List<Filmes>,
@@ -16,11 +24,9 @@ class filmesAdapter (
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(filmesList[position])
     }
-
     override fun getItemCount() = filmesList.size
 
     class ViewHolder(
@@ -29,12 +35,15 @@ class filmesAdapter (
 
         fun bind(
             Filmes: Filmes,
-        ) {
-            binding.fotoFilme.setImageResource(R.drawable.films)
-            binding.filmeName.text = Filmes.title
-            binding.dataLancamento.text = Filmes.release_date
-
-
+        ) = with(binding) {
+            Filmes?.let {
+                    Glide.with(itemView)
+                        .load("https://image.tmdb.org/t/p/w500/${Filmes.poster_path}")
+                        .placeholder(R.drawable.films)
+                        .into(fotoFilme)
+                    filmeName.text = Filmes.title
+                    dataLancamento.text = "Data de lançamento: ${Filmes.release_date}"
+                }
         }
     }
 }

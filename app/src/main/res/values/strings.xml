@@ -19,4 +19,6 @@
     <string name="perfil">Favoritos</string>
     <string name="addFV">Adicionar Favorito</string>
     <string name="filmes">Filmes</string>
+    <string name="buttonTips">Ir para Home</string>
+    <string name="filmestoprated">Filmes Top-Rated</string>
 </resources>
